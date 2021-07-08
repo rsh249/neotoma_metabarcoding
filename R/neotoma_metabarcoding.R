@@ -4,6 +4,7 @@ library(stringr)
 library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
+library(rentrez)
 pal = brewer.pal(name='Paired', n = 12)
 
 # get data from zenodo repository and unzip
@@ -15,7 +16,7 @@ system('tar -xvf SURE2021.tar.gz')
 source('./R/merge_fastq.R')
 
 # setup kraken databases
-#source('./R/get_amplicon_db.R') # this takes a long time, run only once!
+source('./R/get_amplicon_db.R') # this takes a long time, run only once!
 
 # run kraken search
 data = list.files('data', full.names = T)
