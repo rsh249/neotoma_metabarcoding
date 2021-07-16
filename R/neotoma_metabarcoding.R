@@ -7,8 +7,9 @@ library(RColorBrewer)
 library(rentrez)
 pal = brewer.pal(name='Paired', n = 12)
 
-# get data from zenodo repository and unzip
-download.file("https://zenodo.org/record/5068129/files/SURE2021.tar.gz?download=1", 'SURE2021.tar.gz')
+# get data from zenodo repository and 
+options(timeout=9999)
+download.file("https://zenodo.org/record/5110824/files/SURE2021.tar.gz?download=1", 'SURE2021.tar.gz')
 system('tar -xvf SURE2021.tar.gz')
 
 
@@ -16,7 +17,7 @@ system('tar -xvf SURE2021.tar.gz')
 source('./R/merge_fastq.R')
 
 # setup kraken databases
-source('./R/get_amplicon_db.R') # this takes a long time, run only once!
+#source('./R/get_amplicon_db.R') # this takes a long time, run only once!
 
 # run kraken search
 data = list.files('data', full.names = T)
